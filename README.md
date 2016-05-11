@@ -21,9 +21,9 @@ reinstallr(path = NULL, pattern = NULL)
 
 ```
 
-Per default reinstallr searches the working directory for R, Rmd, Rnw, Rhtml and Rpres files. If you have all your R projects under one directory, you should specify this as path.
+Per default reinstallr searches the working directory for R, Rmd, Rnw, Rhtml and Rpres files. If you have all your R projects under one directory, just enter:
 
 ```r
-reinstallr(path = '../', pattern = NULL)
+reinstallr::reinstallr(path = '../')
 
 ```

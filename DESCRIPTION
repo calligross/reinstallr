@@ -1,0 +1,11 @@
+Package: reinstallr
+Type: Package
+Title: Search And Reinstall Missing Packages
+Version: 0.1.0
+Author: Calli Gross
+Maintainer: Calli Gross <ggthemeassist@icloud.com>
+Description: Scan R files and reinstall if missing
+License: GPL-3
+URL: https://github.com/reinstallr/
+LazyData: TRUE
+RoxygenNote: 5.0.1

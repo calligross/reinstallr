@@ -1,7 +1,9 @@
 reinstallr
 ==============
 
-`reinstallr` is a tool to identify missing packages, e.g. after upgrading R, by scanning through your R files. If the missing package is available on CRAN and you confirmed the install, `install.packages` is called.
+`reinstallr` is a tool to identify missing packages, e.g. after upgrading R, by scanning through your R files. If the missing packages are available on CRAN and you confirmed the install, `install.packages` is called. 
+
+`reinstallr` searches for library, require and package::function calls. 
 
 Installation
 ------------

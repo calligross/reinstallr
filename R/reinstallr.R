@@ -36,8 +36,6 @@ find_r_files <- function(path = NULL, pattern = NULL) {
     pattern <- '.*\\.(R|r|Rnw|Rhtml|Rpres|Rmd)$'
   }
 
-  libdir <- normalizePath(.libPaths())
-
   files <- list.files(path = path, pattern = pattern, full.names = TRUE, recursive = TRUE, include.dirs = TRUE)
   files_normalized <- normalizePath(files)
 
@@ -56,15 +54,19 @@ scan_for_packages <- function(files) {
   result <- data.frame(file = NULL, package = NULL, stringsAsFactors = FALSE)
 
   for (i in files) {
+    libs <- NULL
+    direct_calls <- NULL
+
     con <- file(i)
     lines <- suppressWarnings(readLines(con))
     libs <- lines[grepl('^(library)|(require)\\(', lines)]
     libs <- gsub('[\'"]', '', libs)
-    libs <- gsub('(((library)|(require))\\()([[:alnum:]]*)(.*\\))', '\\5', libs)
+    libs <- gsub('.*?(library|require)\\(([[:alnum:]]+).*', '\\2', libs)
     libs <- gsub('\\s', '', libs)
 
-    direct_calls <- lines[grepl('[[:alnum:]]*::[[:alnum:]]*\\(', lines)]
-    direct_calls <- gsub('([[:alnum:]]*)::.*', '\\1',  direct_calls)
+    direct_calls <- lines[grepl('::[[:alnum:]]+\\(', lines)]
+    direct_calls <- unlist(sapply(direct_calls, extract_direct_calls))
+    direct_calls <- unname(direct_calls)
 
     libs <- c(libs, direct_calls)
 
@@ -85,12 +87,18 @@ missing_packages <- function(packages) {
 
   missing <- packages[!packages %in% installed]
 
-  available <- available.packages()
-
-  on_cran <- missing %in% available
-
-  missing <- data.frame(package = missing, on_cran = on_cran, stringsAsFactors = FALSE)
+  if (length(missing) > 0) {
+    available <- available.packages()
+    on_cran <- missing %in% available
+    missing <- data.frame(package = missing, on_cran = on_cran, stringsAsFactors = FALSE)
+  }
   return(missing)
 }
 
+extract_direct_calls <- function(string) {
+  string <- strsplit(string, '\\(')
+  string <- unlist(string, use.names = FALSE)
+  string <- string[grepl('\\:\\:', string)]
+  gsub('.*?([[:alnum:]]+)::.*', '\\1', string)
+}
 

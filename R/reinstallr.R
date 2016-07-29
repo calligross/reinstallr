@@ -18,7 +18,7 @@ reinstallr <- function(path = NULL, pattern = NULL, ...) {
     message('The following packages were found in your source files and can be installed from CRAN:')
     cat(packages_to_install_from_cran)
     cat('\nDo you want to install them now?\n')
-    cat('y: Yes! Go ahed!\nn: No, fortget it!\n')
+    cat('y: Yes! Go ahead!\nn: No, forget it!\n')
     answer <- readLines(n = 1)
     if(answer == 'y') {
       install.packages(packages_to_install_from_cran, ...)

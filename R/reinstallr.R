@@ -5,7 +5,7 @@
 #' @details
 #' reinstallr() scans all R source files in the path specified by the \code{path} parameter and matching the \code{pattern} regex.
 #' reinstallr looks for \code{library(package)}, \code{require(package)} and \code{package::function}
-#' @importFrom utils install.packages
+#' @importFrom utils install.packages menu
 #' @export
 #'
 reinstallr <- function(path = NULL, pattern = NULL, ...) {

@@ -1,2 +1,9 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^examples
+^README.md
+^.Rhistory
+^.RData
+^NEWS\.md$
+^cran-comments\.md$
+^\.travis\.yml$

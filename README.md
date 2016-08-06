@@ -1,5 +1,7 @@
 reinstallr
 ==============
+[![Build Status](https://travis-ci.org/calligross/reinstallr.svg?branch=master)](https://travis-ci.org/calligross/reinstallr)
+[![CRAN](http://www.r-pkg.org/badges/version/reinstallr)](http://cran.rstudio.com/package=reinstallr) [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/reinstallr?color=brightgreen)](http://www.r-pkg.org/pkg/reinstallr)
 
 `reinstallr` is a tool to identify missing packages, e.g. after upgrading R, by scanning through your R files. If the missing packages are available on CRAN and you confirmed the install, `install.packages` is called. As a bonus, it provides some information about the packages you are using.
 

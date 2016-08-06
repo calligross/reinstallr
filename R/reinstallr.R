@@ -102,3 +102,20 @@ extract_direct_calls <- function(string) {
   gsub('.*?([[:alnum:]]+)::.*', '\\1', string)
 }
 
+show_package_stats <- function(path = NULL, pattern = NULL) {
+
+  found_packages <- scan_for_packages(find_r_files(path = path, pattern = pattern))
+
+  package_stats <- aggregate(file ~ ., data = found_packages, length)
+  names(package_stats) <- c('package', 'n')
+  package_stats <- package_stats[order(package_stats$n), ]
+
+  return(package_stats)
+}
+
+find_used_packages <- function(packages, path = NULL, pattern = NULL) {
+
+  found_packages <- scan_for_packages(find_r_files(path = path, pattern = pattern))
+  found_packages[found_packages$package %in% packages, ]
+
+}

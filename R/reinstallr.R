@@ -113,12 +113,16 @@ show_package_stats <- function(path = NULL, pattern = NULL) {
   names(package_stats) <- c('package', 'n')
   package_stats <- package_stats[order(package_stats$n), ]
 
-  return(package_stats)
+  if (nrow(package_stats) > 0)
+    return(package_stats)
 }
 
 find_used_packages <- function(packages, path = NULL, pattern = NULL) {
 
   found_packages <- scan_for_packages(find_r_files(path = path, pattern = pattern))
-  found_packages[found_packages$package %in% packages, ]
+  package_location <- found_packages[found_packages$package %in% packages, ]
+
+  if (nrow(package_location) > 0)
+    return(package_location)
 
 }

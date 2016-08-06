@@ -21,12 +21,16 @@ reinstallr <- function(path = NULL, pattern = NULL, ...) {
   }
 
     message('The following packages were found in your source files and can be installed from CRAN:')
-    cat(packages_to_install_from_cran)
-    cat('\nDo you want to install them now?\n')
-    cat('y: Yes! Go ahead!\nn: No, forget it!\n')
-    answer <- readLines(n = 1)
+    cat(paste0(c(packages_to_install_from_cran, '\n\n')))
+    answer <- menu(
+      choices = c(
+      'Yes!',
+      'No, forget it!'
+      ),
+      title = 'Do you want to run install.packages()?'
+    )
 
-    if (answer == 'y') {
+    if (answer == 1) {
       install.packages(packages_to_install_from_cran, ...)
     } else {
       return(packages_to_install_from_cran)
@@ -65,6 +69,7 @@ scan_for_packages <- function(files) {
 
     con <- file(i)
     lines <- suppressWarnings(readLines(con))
+    lines <- gsub('#.*', '', lines)
     libs <- lines[grepl('^(library)|(require)\\(', lines)]
     libs <- gsub('[\'"]', '', libs)
     libs <- gsub('.*?(library|require)\\(([[:alnum:]]+).*', '\\2', libs)
@@ -132,12 +137,15 @@ show_package_stats <- function(path = NULL, pattern = NULL) {
 
   found_packages <- scan_for_packages(find_r_files(path = path, pattern = pattern))
 
-  package_stats <- aggregate(file ~ ., data = found_packages, length)
-  names(package_stats) <- c('package', 'n')
-  package_stats <- package_stats[order(package_stats$n), ]
+  if (nrow(found_packages) > 0) {
+    package_stats <- aggregate(file ~ ., data = found_packages, length)
+    names(package_stats) <- c('package', 'n')
+    package_stats <- package_stats[order(package_stats$n), ]
+    row.names(package_stats) <- NULL
 
-  if (nrow(package_stats) > 0)
     return(package_stats)
+  }
+
 }
 
 #' Find Files Where Specific Packages Are Used
@@ -159,4 +167,22 @@ find_used_packages <- function(packages, path = NULL, pattern = NULL) {
   if (nrow(package_location) > 0)
     return(package_location)
 
+}
+
+#' Show used but not installed packages
+#'
+#' @param path Directory which is scanned recursively. Default is the working directory.
+#' @param pattern Regex to identify R source files. Default is .*\\.(R|r|Rnw|Rhtml|Rpres|Rmd)$
+#' @param ... Parameters passed to available.packages()
+#'
+#' @return A data.frame with missing packages
+#' @details \code{show_missing_packages()} searches missing packages and checks if they are available on CRAN
+#' @export
+#'
+#' @examples
+#' show_missing_packages('../')
+show_missing_packages <- function(path = NULL, pattern = NULL, ...) {
+  found_packages <- scan_for_packages(find_r_files(path = path, pattern = pattern))
+  missing_packages <- missing_packages(found_packages$package, ...)
+  return(missing_packages)
 }

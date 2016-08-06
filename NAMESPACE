@@ -2,6 +2,7 @@
 
 export(find_used_packages)
 export(reinstallr)
+export(show_missing_packages)
 export(show_package_stats)
 importFrom(stats,aggregate)
 importFrom(utils,available.packages)

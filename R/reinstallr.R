@@ -1,6 +1,11 @@
 #' reinstallr
-#'
-#' @return Installs packages or if not interactive a list of missing packages
+#' @param path Define a directory which is scanned recursively. Default is the working directory.
+#' @param pattern Regex to identify R source files. Default is .*\\.(R|r|Rnw|Rhtml|Rpres|Rmd)$
+#' @param ... Parameters passed to install.packages()
+#' @details
+#' reinstallr() scans all R source files in the path specified by the \code{path} parameter and matching the \code{pattern} regex.
+#' reinstallr looks for \code{library(package)}, \code{require(package)} and \code{package::function}
+#' @importFrom utils install.packages
 #' @export
 #'
 reinstallr <- function(path = NULL, pattern = NULL, ...) {
@@ -82,6 +87,12 @@ scan_for_packages <- function(files) {
   return(result)
 }
 
+#' Title
+#'
+#' @param packages Vector of package names
+#'
+#' @return Vector of not installed packages
+#' @importFrom utils installed.packages available.packages
 missing_packages <- function(packages) {
   packages <- unique(packages)
 
@@ -105,6 +116,17 @@ extract_direct_calls <- function(string) {
   gsub('.*?([[:alnum:]]+)::.*', '\\1', string)
 }
 
+#' Show Used Packages
+#'
+#' @param path Define a directory which is scanned recursively. Default is the working directory.
+#' @param pattern Regex to identify R source files. Default is .*\\.(R|r|Rnw|Rhtml|Rpres|Rmd)$
+#'
+#' @return A aggregated data.frame
+#' @importFrom stats aggregate
+#' @export
+#'
+#' @examples
+#' show_package_stats('../')
 show_package_stats <- function(path = NULL, pattern = NULL) {
 
   found_packages <- scan_for_packages(find_r_files(path = path, pattern = pattern))
@@ -117,6 +139,17 @@ show_package_stats <- function(path = NULL, pattern = NULL) {
     return(package_stats)
 }
 
+#' Find Files Where Specific Packages Are Used
+#'
+#' @param packages Vector of packages to look for
+#' @param path Define a directory which is scanned recursively. Default is the working directory.
+#' @param pattern Regex to identify R source files. Default is .*\\.(R|r|Rnw|Rhtml|Rpres|Rmd)$
+#'
+#' @return A data.frame with the files which are using the specified packages
+#' @export
+#'
+#' @examples
+#' find_used_packages('dplyr', path = '../')
 find_used_packages <- function(packages, path = NULL, pattern = NULL) {
 
   found_packages <- scan_for_packages(find_r_files(path = path, pattern = pattern))

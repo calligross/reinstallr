@@ -4,10 +4,12 @@
 \alias{missing_packages}
 \title{Title}
 \usage{
-missing_packages(packages)
+missing_packages(packages, ...)
 }
 \arguments{
 \item{packages}{Vector of package names}
+
+\item{...}{Parameters passed to available.packages()}
 }
 \value{
 Vector of not installed packages

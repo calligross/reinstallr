@@ -7,7 +7,7 @@
 show_package_stats(path = NULL, pattern = NULL)
 }
 \arguments{
-\item{path}{Define a directory which is scanned recursively. Default is the working directory.}
+\item{path}{Directory which is scanned recursively. Default is the working directory.}
 
 \item{pattern}{Regex to identify R source files. Default is .*\\.(R|r|Rnw|Rhtml|Rpres|Rmd)$}
 }

@@ -9,7 +9,7 @@ find_used_packages(packages, path = NULL, pattern = NULL)
 \arguments{
 \item{packages}{Vector of packages to look for}
 
-\item{path}{Define a directory which is scanned recursively. Default is the working directory.}
+\item{path}{Directory which is scanned recursively. Default is the working directory.}
 
 \item{pattern}{Regex to identify R source files. Default is .*\\.(R|r|Rnw|Rhtml|Rpres|Rmd)$}
 }

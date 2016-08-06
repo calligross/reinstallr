@@ -1,5 +1,5 @@
 #' reinstallr
-#' @param path Define a directory which is scanned recursively. Default is the working directory.
+#' @param path Directory which is scanned recursively. Default is the working directory.
 #' @param pattern Regex to identify R source files. Default is .*\\.(R|r|Rnw|Rhtml|Rpres|Rmd)$
 #' @param ... Parameters passed to install.packages()
 #' @details
@@ -119,7 +119,7 @@ extract_direct_calls <- function(string) {
 
 #' Show Used Packages
 #'
-#' @param path Define a directory which is scanned recursively. Default is the working directory.
+#' @param path Directory which is scanned recursively. Default is the working directory.
 #' @param pattern Regex to identify R source files. Default is .*\\.(R|r|Rnw|Rhtml|Rpres|Rmd)$
 #'
 #' @return A aggregated data.frame
@@ -143,7 +143,7 @@ show_package_stats <- function(path = NULL, pattern = NULL) {
 #' Find Files Where Specific Packages Are Used
 #'
 #' @param packages Vector of packages to look for
-#' @param path Define a directory which is scanned recursively. Default is the working directory.
+#' @param path Directory which is scanned recursively. Default is the working directory.
 #' @param pattern Regex to identify R source files. Default is .*\\.(R|r|Rnw|Rhtml|Rpres|Rmd)$
 #'
 #' @return A data.frame with the files which are using the specified packages

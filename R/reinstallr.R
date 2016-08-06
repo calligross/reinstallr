@@ -25,7 +25,8 @@ reinstallr <- function(path = NULL, pattern = NULL, ...) {
     cat('\nDo you want to install them now?\n')
     cat('y: Yes! Go ahead!\nn: No, forget it!\n')
     answer <- readLines(n = 1)
-    if(answer == 'y') {
+
+    if (answer == 'y') {
       install.packages(packages_to_install_from_cran, ...)
     } else {
       return(packages_to_install_from_cran)
@@ -90,10 +91,10 @@ scan_for_packages <- function(files) {
 #' Title
 #'
 #' @param packages Vector of package names
-#'
+#' @param ... Parameters passed to available.packages()
 #' @return Vector of not installed packages
 #' @importFrom utils installed.packages available.packages
-missing_packages <- function(packages) {
+missing_packages <- function(packages, ...) {
   packages <- unique(packages)
 
   installed <- installed.packages()
@@ -102,7 +103,7 @@ missing_packages <- function(packages) {
   missing <- packages[!packages %in% installed]
 
   if (length(missing) > 0) {
-    available <- available.packages()
+    available <- available.packages(...)
     on_cran <- missing %in% available
     missing <- data.frame(package = missing, on_cran = on_cran, stringsAsFactors = FALSE)
   }

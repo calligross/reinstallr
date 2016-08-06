@@ -93,11 +93,6 @@ scan_for_packages <- function(files) {
   return(result)
 }
 
-#' Title
-#'
-#' @param packages Vector of package names
-#' @param ... Parameters passed to available.packages()
-#' @return Vector of not installed packages
 #' @importFrom utils installed.packages available.packages
 missing_packages <- function(packages, ...) {
   packages <- unique(packages)

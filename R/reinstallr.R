@@ -76,6 +76,9 @@ scan_for_packages <- function(files) {
       result <- rbind(result, data.frame(file = i, package = libs, stringsAsFactors = FALSE))
     }
   }
+
+  result <- result[!result$package %in% c('base'), ]
+
   return(result)
 }
 

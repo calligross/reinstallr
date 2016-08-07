@@ -1,7 +1,7 @@
 Package: reinstallr
 Type: Package
 Title: Search and Install Missing Packages
-Version: 0.1.0
+Version: 0.1.0.9000
 Author: Calli Gross
 Maintainer: Calli Gross <calli@calligross.de>
 Description: Search R files for not installed packages and run install.packages.

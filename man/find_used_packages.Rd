@@ -20,6 +20,8 @@ A data.frame with the files which are using the specified packages
 Find Files Where Specific Packages Are Used
 }
 \examples{
+\dontrun{
 find_used_packages('dplyr', path = '../')
+}
 }
 

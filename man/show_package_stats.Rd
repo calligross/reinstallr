@@ -18,6 +18,8 @@ A aggregated data.frame
 Show Used Packages
 }
 \examples{
+\dontrun{
 show_package_stats('../')
+}
 }
 

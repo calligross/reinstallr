@@ -127,7 +127,9 @@ extract_direct_calls <- function(string) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' show_package_stats('../')
+#' }
 show_package_stats <- function(path = NULL, pattern = NULL) {
 
   found_packages <- scan_for_packages(find_r_files(path = path, pattern = pattern))
@@ -153,7 +155,9 @@ show_package_stats <- function(path = NULL, pattern = NULL) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' find_used_packages('dplyr', path = '../')
+#' }
 find_used_packages <- function(packages, path = NULL, pattern = NULL) {
 
   found_packages <- scan_for_packages(find_r_files(path = path, pattern = pattern))
@@ -175,7 +179,9 @@ find_used_packages <- function(packages, path = NULL, pattern = NULL) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' show_missing_packages('../')
+#' }
 show_missing_packages <- function(path = NULL, pattern = NULL, ...) {
   found_packages <- scan_for_packages(find_r_files(path = path, pattern = pattern))
   missing_packages <- missing_packages(found_packages$package, ...)

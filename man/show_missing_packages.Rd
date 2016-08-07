@@ -23,6 +23,8 @@ Show used but not installed packages
 \code{show_missing_packages()} searches missing packages and checks if they are available on CRAN
 }
 \examples{
+\dontrun{
 show_missing_packages('../')
+}
 }
 

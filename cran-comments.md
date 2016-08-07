@@ -1,7 +1,7 @@
 ## Test environments
 * local OS X install, R 3.3.1
 * win-builder (devel and release)
-* travis-ci oldrel, release and devel 
+* travis-ci, R 3.3.1 
 
 ## R CMD check results
 

@@ -9,3 +9,4 @@ License: GPL-3
 URL: https://github.com/calligross/reinstallr/
 LazyData: TRUE
 RoxygenNote: 5.0.1
+Suggests: testthat

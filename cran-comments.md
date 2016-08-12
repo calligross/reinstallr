@@ -1,3 +1,12 @@
+## Update 2016-08-12
+
+This is a resubmission, the last submission wasn't accepted due to the lack of code testing.
+
+I implemented tests using testthat for:
+* show_package_stats()
+* find_used_packages()
+* show_missing_packages()
+
 ## Update 2016-08-7
 
 * Encapsulated the examples in dontrun{} to prevent them from walking through all the parallel .Rchecks directories on CRAN.

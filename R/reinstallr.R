@@ -55,6 +55,7 @@ find_r_files <- function(path = NULL, pattern = NULL) {
   lib_pattern <- paste0('(^', lib_pattern, '.*)')
   lib_pattern <- paste(lib_pattern, collapse = '|')
   files <- files[!grepl(lib_pattern, files_normalized)]
+  files <- files[!grepl('win-library\\/[0-9]\\.[0-9]', files)]
 
   return(files)
 }

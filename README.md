@@ -15,6 +15,14 @@ reinstallr
 
 Installation
 ------------
+
+`reinstallr` is available on CRAN (stable) or via `devtools::install_github` (dev)
+
+```r
+install.packages('reinstallr')
+```
+
+
 ```r
 if (!requireNamespace("devtools", quietly = TRUE))
   install.packages("devtools")

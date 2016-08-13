@@ -1,19 +1,23 @@
 context('show_missing_packages')
 
 test_that('missing packages are found', {
-  temp_dir <- tempdir()
   filename <- '/test_source_show_missing_packages.R'
-  con <- file(paste0(temp_dir, filename))
+  test_dir <- 'show_missing_packages'
+  temp_dir <- tempdir()
+  testpath <- paste0(temp_dir, test_dir)
+  filepath <- paste0(testpath, filename)
+  dir.create(paste0(temp_dir, test_dir))
+
+  con <- file(filepath)
   test_source <- 'library(dplyr666)
   # library(notused)
   dplyr667::filter()
   require(dplyr668)'
   writeLines(text = test_source, con = con)
-  result <- show_missing_packages(path = temp_dir, repos = 'http://cran.rstudio.com/')
+  result <- show_missing_packages(path = testpath, repos = 'http://cran.rstudio.com/')
   close(con)
 
   expect_equal(nrow(result), 3)
   expect_true(all(result$on_cran) == FALSE)
-
 
 })

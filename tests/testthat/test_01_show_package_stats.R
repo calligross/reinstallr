@@ -1,14 +1,19 @@
 context('show_package_stats')
 
-temp_dir <- tempdir()
 filename <- '/test_source_show_package_stats.R'
-con <- file(paste0(temp_dir, filename))
+test_dir <- 'show_package_stats'
+temp_dir <- tempdir()
+testpath <- paste0(temp_dir, test_dir)
+filepath <- paste0(testpath, filename)
+dir.create(paste0(temp_dir, test_dir))
+
+con <- file(filepath)
 test_source <- 'library("dplyr")
 # library(notused)
 dplyr::filter()
 require(dplyr)'
 writeLines(text = test_source, con = con)
-result <- show_package_stats(path = temp_dir)
+result <- show_package_stats(path = testpath)
 close(con)
 
 

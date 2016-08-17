@@ -134,7 +134,7 @@ extract_direct_calls <- function(string) {
 show_package_stats <- function(path = NULL, pattern = NULL) {
 
   found_packages <- scan_for_packages(find_r_files(path = path, pattern = pattern))
-
+  found_packages <- unique(found_packages[, c('file', 'package')])
   if (nrow(found_packages) > 0) {
     package_stats <- aggregate(file ~ ., data = found_packages, length)
     names(package_stats) <- c('package', 'n')

@@ -1,3 +1,10 @@
+## Update 2016-08-18
+
+I'm truly sorry, for all the trouble reinstallr is causing you dear maintainers.
+
+The package didn't pass the check with olrdrel, as the available.packages's repos argument was introduced in R 3.3. As a consequence, reinstallr requires now R >= 3.0.0
+
+
 ## Update 2016-08-12
 
 This is a resubmission, the last submission wasn't accepted due to the lack of code testing.

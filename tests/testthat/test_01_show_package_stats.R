@@ -10,8 +10,8 @@ dir.create(paste0(temp_dir, test_dir))
 con <- file(filepath)
 test_source <- 'library("dplyr")
 # library(notused)
-dplyr::filter()
-require(dplyr)'
+ggplot2::filter()
+require(reshape2)'
 writeLines(text = test_source, con = con)
 result <- show_package_stats(path = testpath)
 close(con)
@@ -24,5 +24,5 @@ test_that('show_package_stats finds only used packages', {
 })
 
 test_that('show_package_stats finds the correct number of packages',
-  expect_equal(result[result$package == 'dplyr', 'n'], 3)
+  expect_equal(length(result[result$package %in% c('dplyr', 'ggplot2', 'reshape2'), 'n']), 3)
 )

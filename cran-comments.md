@@ -4,6 +4,10 @@ I'm truly sorry, for all the trouble reinstallr is causing you dear maintainers.
 
 The package didn't pass the check with olrdrel, as the available.packages's repos argument was introduced in R 3.3. As a consequence, reinstallr requires now R >= 3.0.0
 
+## Test environments
+* local OS X install, R 3.3.1
+* win-builder (devel and release)
+* travis-ci, R release and devel 
 
 ## Update 2016-08-12
 

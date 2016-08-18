@@ -2,7 +2,7 @@
 
 language: r
 r:
-  - oldrel
+#  - oldrel # don't check oldrel, as long as R 3.3 == release
   - release
   - devel
 sudo: false

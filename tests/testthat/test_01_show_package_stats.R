@@ -11,7 +11,8 @@ con <- file(filepath)
 test_source <- 'library("dplyr")
 # library(notused)
 ggplot2::filter()
-require(reshape2)'
+require(reshape2),
+suppressPackageStartupMessages(library(shiny))'
 writeLines(text = test_source, con = con)
 result <- show_package_stats(path = testpath)
 close(con)
@@ -24,5 +25,5 @@ test_that('show_package_stats finds only used packages', {
 })
 
 test_that('show_package_stats finds the correct number of packages',
-  expect_equal(length(result[result$package %in% c('dplyr', 'ggplot2', 'reshape2'), 'n']), 3)
+  expect_equal(length(result[result$package %in% c('dplyr', 'ggplot2', 'reshape2', 'shiny'), 'n']), 4)
 )

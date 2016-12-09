@@ -71,7 +71,7 @@ scan_for_packages <- function(files) {
     con <- file(i)
     lines <- suppressWarnings(readLines(con))
     lines <- gsub('#.*', '', lines)
-    libs <- lines[grepl('^(library)|(require)\\(', lines)]
+    libs <- lines[grepl('((library)|(require))\\(', lines)]
     libs <- gsub('[\'"]', '', libs)
     libs <- gsub('.*?(library|require)\\(([[:alnum:]]+).*', '\\2', libs)
     libs <- gsub('\\s', '', libs)

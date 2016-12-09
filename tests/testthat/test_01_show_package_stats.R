@@ -1,11 +1,11 @@
 context('show_package_stats')
 
-filename <- '/test_source_show_package_stats.R'
+filename <- 'test_source_show_package_stats.R'
 test_dir <- 'show_package_stats'
 temp_dir <- tempdir()
-testpath <- paste0(temp_dir, test_dir)
-filepath <- paste0(testpath, filename)
-dir.create(paste0(temp_dir, test_dir))
+testpath <- file.path(temp_dir, test_dir)
+filepath <- file.path(testpath, filename)
+dir.create(testpath)
 
 con <- file(filepath)
 test_source <- 'library("dplyr")

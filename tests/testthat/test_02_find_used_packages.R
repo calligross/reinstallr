@@ -2,12 +2,12 @@ context('find_used_packages')
 
 test_that('find_used_packages finds the right file', {
 
-  filename <- '/test_find_used_packages.R'
+  filename <- 'test_find_used_packages.R'
   test_dir <- 'find_used_packages'
   temp_dir <- tempdir()
-  testpath <- paste0(temp_dir, test_dir)
-  filepath <- paste0(testpath, filename)
-  dir.create(paste0(temp_dir, test_dir))
+  testpath <- file.path(temp_dir, test_dir)
+  filepath <- file.path(testpath, filename)
+  dir.create(testpath)
 
   con <- file(filepath)
   test_source <- 'library(dplyr)

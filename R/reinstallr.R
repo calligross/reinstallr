@@ -76,7 +76,7 @@ scan_for_packages <- function(files) {
     libs <- gsub('.*?(library|require)\\(([[:alnum:]]+).*', '\\2', libs)
     libs <- gsub('\\s', '', libs)
 
-    direct_calls <- lines[grepl('::[[:alnum:]]+\\(', lines)]
+    direct_calls <- lines[grepl('(:){2,3}[[:alnum:]]+\\(', lines)]
     direct_calls <- unlist(sapply(direct_calls, extract_direct_calls))
     direct_calls <- unname(direct_calls)
 

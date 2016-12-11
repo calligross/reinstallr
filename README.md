@@ -11,7 +11,7 @@ reinstallr
 
 * `library()`, 
 * `require()` and 
-* `package::function` calls. 
+* `package::function`/`package:::function` calls. 
 
 Installation
 ------------
@@ -45,7 +45,7 @@ reinstallr(path = '~/Documents/R/')
 
 ```
 
-`show_missing_packages()` searches for missing packages and gives the information if the package is available on CRAN:
+`show_missing_packages()` searches for missing packages and checks if the package is available on CRAN:
 
 ```r
 show_missing_packages(path = '~/Documents/R/')

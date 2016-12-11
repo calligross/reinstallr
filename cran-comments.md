@@ -1,40 +1,19 @@
-## Update 2016-08-18
-
-I'm truly sorry, for all the trouble reinstallr is causing you dear maintainers.
-
-The package didn't pass the check with olrdrel, as the available.packages's repos argument was introduced in R 3.3. As a consequence, reinstallr requires now R >= 3.0.0
-
+## Update 2016-12-11
 ## Test environments
-* local OS X install, R 3.3.1
+* local OS X install, R 3.3.2
 * win-builder (devel and release)
-* travis-ci, R release and devel 
-
-## Update 2016-08-12
-
-This is a resubmission, the last submission wasn't accepted due to the lack of code testing.
-
-I implemented tests using testthat for:
-* show_package_stats()
-* find_used_packages()
-* show_missing_packages()
-
-## Update 2016-08-7
-
-* Encapsulated the examples in dontrun{} to prevent them from walking through all the parallel .Rchecks directories on CRAN.
-* This should also fix the error when checking if no CRAN mirror is configured.
-
-
-
-## Test environments
-* local OS X install, R 3.3.1
-* win-builder (devel and release)
-* travis-ci, R 3.3.1 
+* travis-ci (devel and release)
 
 ## R CMD check results
 
 \* checking CRAN incoming feasibility ... NOTE  
 Maintainer: 'Calli Gross <calli@calligross.de>'
 
+X-CRAN-Comment: Archived on 2016-10-16 as check problems were not
+  corrected despite reminders.
+
+I received one mail on September 28 and didn't have the time to correct both issues for several reasons. How ever, file path are now constructed with file.path and the repos is received from getOption with a fallback to cloud.R-project.org. Sorry for the inconvenience.
+  
 
 ## Downstream dependencies
 There are no downstream dependencies.

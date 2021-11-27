@@ -1,9 +1,0 @@
-# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
-
-language: r
-r:
-#  - oldrel # don't check oldrel, as long as R 3.3 == release
-  - release
-  - devel
-sudo: false
-cache: packages

@@ -24,4 +24,3 @@ Find Files Where Specific Packages Are Used
 find_used_packages('dplyr', path = '../')
 }
 }
-

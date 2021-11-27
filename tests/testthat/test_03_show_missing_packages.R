@@ -16,8 +16,9 @@ test_that('missing packages are found', {
   writeLines(text = test_source, con = con)
 
   # check if repo is set, otherwise test is going to fail...
+  chooseCRANmirror(graphics=FALSE, ind=1, local.only=TRUE)
   repo <- getOption("repos")
-  if (is.null(repo) | repo == '@CRAN@') {
+  if (is.null(repo)) {
     repo <- 'https://cloud.R-project.org'
   }
 
